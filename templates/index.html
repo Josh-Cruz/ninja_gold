@@ -10,14 +10,62 @@
 
 </head>
 <!-- build 4 boxes with buttons whos value matches the location they represent actions send to /process_money-->
-<!-- your gold counter in top left to keep track of full gold -->
 <!-- activites box explaining exactly what happened after each click of the buttons -->
 
 <body>
-    <div class="container">
+    
+        <div class="container">
+            <form action="/process_money" method="post">
+                <div  style="margin-top: 50px">
+                    <h4>Total Money: {{session['total_gold']}}</h4>
+                </div>
+                <div class="d-flex justify-content-around " style="margin-top: 150px">
+                <div class="d-flex align-items-center">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Farm</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Earns 10-20 Gold</h6>
+                                <button name="submit" value="farm" type="submit">Find Gold!</button> 
+                            </div>
+                        </div>           
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Cave</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Earns 5-10 Gold</h6>
+                                <button name="submit" value="cave" type="submit">Find Gold!</button>
+                            </div>
+                        </div>           
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">House</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Earns 2-5 Gold</h6>
+                                <button name="submit" value="house" type="submit">Find Gold!</button>
+                            </div>
+                        </div>           
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Casino</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Earns/loses 50 Gold</h6>
+                                <button name="submit" value="casino" type="submit">Find Gold!</button>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </form>
+            <div class="d-flex justify-content-around " style="margin-top: 150px">
+                <h3>Activities:</h3>
+                 {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul class=flashes>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %} {% block body %}{% endblock %}
+            </div>
 
+        </div>
+   
 
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
